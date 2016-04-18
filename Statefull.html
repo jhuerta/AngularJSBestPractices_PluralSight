@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Angular JS Fundamentslas - Minification</title>
+	</head>
+	<body>
+		<div ng-app="statefullApp">
+			
+			<div ng-controller="controllerA">
+				<input type="text" ng-model='newValue' >
+				<button ng-click="Add(newValue)">Add Value</button>
+				<h3>From Controller A</h3>
+				<div ng-repeat="v in Values">
+					{{v}}
+				</div>
+			</div>
+			<div ng-controller="controllerB">
+			<h3>From Controller B</h3>
+				<div ng-repeat="v in Values">
+					{{v}}
+				</div>
+			</div>
+		</div>
+		
+		<script src="./js/libs/angular.js" type="text/javascript" /></script>
+		<script src="./js/apps/statefullApp.js" type="text/javascript" ></script>
+	</body>
+</html>
