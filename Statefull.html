@@ -6,8 +6,15 @@
 	</head>
 	<body>
 		<div ng-app="statefullApp">
+
+		
 			
 			<div ng-controller="controllerA">
+
+			<h2>Using services as function</h2>
+		<div>This is using a factory with just one method</div>
+		Calcualted Value: {{Calculatedvalue}} <br/>
+
 				<input type="text" ng-model='newValue' >
 				<button ng-click="Add(newValue)">Add Value</button>
 				<h3>From Controller A</h3>
