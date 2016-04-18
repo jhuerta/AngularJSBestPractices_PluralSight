@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Angular JS Fundamentslas - Minification</title>
+	</head>
+	<body>
+		<div ng-app="servicesApp">
+			
+			<div ng-controller="servicesController">
+				Name: {{name}}<br/>
+				valueServicename: {{valueServicename}}<br/>
+				serviceWithServiceMethodValue: {{serviceWithServiceMethodValue}}<br/>
+				serviceWithFactoryMethodValue: {{serviceWithFactoryMethodValue}}<br/>
+
+				factoryWithFactoryMethodValue: {{factoryWithFactoryMethodValue}}<br/>
+				serviceServiceValue: {{serviceServicenameB}}<br/>
+				providerServiceValue: {{providerServiceValue}}<br/>
+
+				<h3>Using rating filter</h3>
+
+				5 {{ 5 | rating}} <br/>
+				3 {{ 3 | rating}}
+
+				<h3>Using filter as a service (injecting filter in controller as a service)</h3>
+				<input type="text" ng-model='inputFilter' ng-change='representFilter()'/>
+				{{usingRatingAsFilter}}
+				{{inputFilter}}
+
+				<h3>Using former filter as factory</h3>
+				{{usingFormerFilterAsFactory}}
+
+			</div>
+		</div>
+		
+		<script src="./js/libs/angular.js" type="text/javascript" /></script>
+		<script src="./js/apps/servicesApp.js" type="text/javascript" ></script>
+	</body>
+</html>
