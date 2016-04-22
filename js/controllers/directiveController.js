@@ -63,3 +63,69 @@ function DirectiveWithFunctionality() {
     };
 }
 
+
+directiveApp.directive('parentDirective', ParentDirective);
+
+function ParentDirective() {
+    return {
+        restrict: 'E',
+        replace: true,
+        templateUrl: '/js/templates/parentDirective.html',
+        controller: function($scope)
+        {
+        	$scope.count = 0;
+        	this.IncreaseCount = function()
+        	{
+        		return $scope.count++;
+        	};
+        }
+    };
+}
+
+directiveApp.directive('brotherDirective', BrotherDirective);
+
+function BrotherDirective() {
+    return {
+        restrict: 'AE',
+        //require: 'childDirective',
+        controller: function($scope)
+        {
+        	var brotherCount = 0;
+        	this.IncreaseBrother = function()
+        	{
+        		var value = brotherCount++;
+        		$scope.fromBrother = value;
+        		return value;
+        	};
+        	
+        }
+    };
+}
+
+
+directiveApp.directive('childDirective', ChildDirectve);
+
+function ChildDirectve() {
+    return {
+        restrict: 'E',
+        replace: true,
+        templateUrl: '/js/templates/childDirective.html',
+        require:['^parentDirective','brotherDirective'],
+		link: function(scope,element,attrs,ctrl)
+        {
+        	scope.fromBrother = 0;
+        	scope.increaseParent = function()
+        	{
+        		var newValue = ctrl[0].IncreaseCount();
+        		element.css('color',newValue);
+        	};
+
+        	scope.increaseBrother = function()
+        	{
+        		var newValue = ctrl[1].IncreaseBrother();
+        		console.log(newValue);
+        		element.css('color',newValue);
+        	};
+        }
+    };
+}
