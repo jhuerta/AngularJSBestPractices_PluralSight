@@ -6,11 +6,26 @@
 	</head>
 	<body>
 		<div ng-app="directiveApp">
+			<my-directive></my-directive>
+			
+			<span>What will it appear here?</span>
+			There should be span: <span>*************</span>
 			
 			<div ng-controller="directiveController">
 				{{name}}
+
+
+				<directive-with-functionality></directive-with-functionality>
+
 			</div>
+			<my-directive></my-directive>
+
+
+			Below, hello world:
+		<encapsulated-hello-world></encapsulated-hello-world>
 		</div>
+
+		
 		
 	</body>
 	<script src="./js/libs/angular.js" type="text/javascript" /></script>
