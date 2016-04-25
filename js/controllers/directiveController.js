@@ -7,6 +7,7 @@ directiveApp.controller('directiveController', ['$scope', DirectiveController]);
 
 function DirectiveController(scope) {
     scope.name = "App 1";
+    scope.ctrlVariable = '10';
     scope.varInController = "Var in controller";
 }
 
@@ -127,5 +128,44 @@ function ChildDirectve() {
         		element.css('color',newValue);
         	};
         }
+    };
+}
+
+directiveApp.directive('dirIsolatedScope', DirIsolatedScope);
+
+function DirIsolatedScope()
+{
+    return {
+        restrict:'E',
+        replace: true,
+        template:   '<div>'+
+                        '<button ng-click="increase()"> Increase</button>'+
+                        '<div>The Object: {{theobject}}</div>'+
+                        '<div>Val: {{val}}</div>'+
+                    '</div>',
+        scope:{
+            val: '='
+        },
+        controller: function($scope)
+        {
+            $scope.increase = function()
+            {
+                $scope.theobject = $scope.val++;
+            };
+            
+        }
+
+    };
+}
+
+
+directiveApp.directive('commentDirective', CommentDirective);
+
+function CommentDirective()
+{
+    return {
+        restrict:'M',
+        replace: true,
+        template:   '<span>--------------------- I am a comment comming from a directive!!! -----------------------</span>'
     };
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Angular JS Fundamentslas</title>
+	</head>
+	<body>
+		<div ng-app="declarativeApp">
+			<div ng-controller="declarativeController"> 
+				{{ItWorks}}
+				<span ng-hide='editing'>
+					<div>Name:<span ng-bind='student.Name'></span></div>
+					<div>Course:<span ng-bind='student.Course'></span></div>
+					<button ng-click=edit()>Edit</button>
+				</span>
+				<span ng-show='editing'>
+					<div>Name:<input ng-model='student.Name'></div>
+					<div>Course:<input ng-model='student.Course'></div>
+					<button ng-click=save()>Save</button>
+				</span>
+
+			</div>
+		</div>
+	</body>
+	<script src="./js/libs/angular.js" type="text/javascript" /></script>
+	<script src="./js/controllers/declarativeController.js" type="text/javascript" ></script>
+</html>

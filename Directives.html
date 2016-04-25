@@ -22,8 +22,22 @@
 					<parent-directive></parent-directive>
 				</fieldset>
 
+
+				<fieldset>
+				<legend>Isoloated Scope</legend>
+				<span>Passing the variable from controller to the directive. Acting on the variable, modifies the controller variable</span>
+					<div>Value from controller: {{ctrlVariable}}</div>
+					<dir-isolated-scope val='ctrlVariable'></dir-isolated-scope>
+				</fieldset>
+
 			</div>
 			<my-directive></my-directive>
+
+			Below a comment directive;
+			<div>
+
+			<!-- directive: comment-directive -->
+			</div>
 
 
 			Below, hello world:
