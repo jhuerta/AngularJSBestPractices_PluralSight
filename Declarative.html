@@ -9,17 +9,11 @@
 			<div ng-controller="declarativeController"> 
 				{{ItWorks}}
 				<span ng-hide='editing'>
-					<div>Name:<span ng-bind='student.Name'></span></div>
-					<div>Course:<span ng-bind='student.Course'></span></div>
+					<!-- directive: af-display-student  {{student}}' -->
+					
 					<button ng-click=edit()>Edit</button>
 				</span>
-				<span ng-show='editing'>
-					<div>Name:<input ng-model='student.Name'></div>
-					<div>Course:<input ng-model='student.Course'></div>
-					<button ng-click=save()>Save</button>
-				</span>
-
-			</div>
+				<data-af-edit-student data-student='student' data-shows='editing' data-save-this-method='save'></data-af-editstudent>
 		</div>
 	</body>
 	<script src="./js/libs/angular.js" type="text/javascript" /></script>
