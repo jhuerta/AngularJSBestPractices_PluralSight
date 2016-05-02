@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Dealing with scope</title>
+	</head>
+	<body ng-app="scopeApp">
+		<fieldset>
+			<legend>Demo 1</legend>
+			<div >
+				<div ng-controller="parentController">
+					
+					
+					Below the directive
+					<br/>
+					Parent content: {{parent}} <br/>
+					Child Content: {{child}}<br/>
+					<div>
+						// Start of directive
+					</div>
+					<shared-scope-directive></shared-scope-directive>
+					<div>
+						// End of directive
+					</div>
+					<div ng-controller="childController">
+						<input type="text" ng-model='child'>
+						<button ng-click='ChildAction()'>Modify Through Child</button>
+						<button ng-click='ParentAction()'>Parent Action</button>
+						<br/>
+						{{child}}
+						{{parent}}
+						<br/>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Shared Controller Directive</legend>
+			<div >
+				<div ng-controller="parentController">
+					Controller with variable:<span>	{{parent}}</span><br/>
+					<br/><br/>-- directive: begin (parent variable inside directive) -- <br/><br/>
+					
+					<br/>----------------<br/>
+					From inherited:{{obj.InheritedDirectiveTitle}}
+					<inherited-scope-directive></inherited-scope-directive>
+					<input type="text" ng-model='obj.InheritedDirectiveTitle'/>
+					<br/>----------------<br/>
+					
+					
+					<br/>From shared:{{SharedDirectiveTitle}}
+					<shared-scope-directive></shared-scope-directive>
+					
+					
+					<br/>From isolated:{{IsolatedDirectiveTitle}}
+					<isolated-scope-directive parent='parent'></isolated-scope-directive>						
+					<br/><br/>-- directive: end --<br/><br/>
+					Parent variable: <input type="text" ng-model='parent'>
+					
+					
+				</div>
+			</div>
+		</fieldset>
+	</body>
+	<script src="./js/libs/angular.js" type="text/javascript" /></script>
+	<script src="./js/controllers/scopeController.js" type="text/javascript" ></script>
+</html>
